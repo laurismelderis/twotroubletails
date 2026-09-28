@@ -1,0 +1,739 @@
+<!-- Paste this entire fragment into a MailerLite HTML/code block.
+     Calculation requires a block or custom-code setting that preserves JavaScript. -->
+<style>
+      #raw-calculator {
+        font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: #6f353d;
+        background: #e7e1d8;
+        font-size: 16px;
+        --wine: #6f353d;
+        --cream: #e7e1d8;
+        --paper: #faf8f5;
+        --muted: #725c5e;
+        --line: #d6c9c6;
+      
+        width: 100%;
+        text-align: left;
+        line-height: 1.5;
+        container-type: inline-size;
+}
+      #raw-calculator * {
+        box-sizing: border-box;
+      }
+      #raw-calculator a {
+        color: inherit;
+        text-underline-offset: 4px;
+      }
+      #raw-calculator button,
+      #raw-calculator input,
+      #raw-calculator select {
+        font: inherit;
+      }
+      #raw-calculator .raw-inner {
+        max-width: 1160px;
+        margin: auto;
+        padding: 48px 32px 64px;
+      }
+      #raw-calculator .raw-primary {
+        display: inline-block;
+        background: var(--wine);
+        color: white;
+        border: 1px solid var(--wine);
+        border-radius: 4px;
+        padding: 14px 24px;
+        text-align: center;
+        font-weight: 600;
+      }
+      #raw-calculator .raw-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      #raw-calculator .raw-brand {
+        font-size: 18.4px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+      #raw-calculator .raw-tag {
+        font-size: 13.6px;
+        color: var(--muted);
+      }
+      #raw-calculator h1 {
+        font-size: clamp(32px, 4.5vw, 52px);
+        line-height: 1.14;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        max-width: 800px;
+        margin: 0 0 20px;
+      }
+      #raw-calculator h2 {
+        font-size: 16px;
+        margin: 0;
+      }
+      #raw-calculator p {
+        line-height: 1.65;
+      }
+      #raw-calculator .raw-intro {
+        max-width: 720px;
+        margin: 0 0 40px;
+        color: var(--muted);
+        font-size: 16.8px;
+      }
+      #raw-calculator .raw-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+        gap: 24px;
+        align-items: start;
+      }
+      #raw-calculator .raw-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 28px;
+      }
+      #raw-calculator .raw-fieldset {
+        border: 0;
+        padding: 0;
+        margin: 0 0 28px;
+        min-width: 0;
+      }
+      #raw-calculator .raw-legend,
+      #raw-calculator .raw-label {
+        font-weight: 650;
+        display: block;
+        margin-bottom: 12px;
+      }
+      #raw-calculator .raw-small,
+      #raw-calculator .raw-hint {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      #raw-calculator .raw-hint {
+        margin: 8px 0 0;
+      }
+      #raw-calculator .raw-profile-hint {
+        margin: 0 0 16px;
+      }
+      #raw-calculator .raw-choices {
+        display: grid;
+        gap: 8px;
+      }
+      #raw-calculator .raw-choice {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        cursor: pointer;
+        line-height: 1.4;
+      }
+      #raw-calculator .raw-choice:hover {
+        border-color: var(--wine);
+      }
+      #raw-calculator .raw-choice:has(input:checked) {
+        border-color: var(--wine);
+        background: #eee4e2;
+      }
+      #raw-calculator .raw-choice input {
+        accent-color: var(--wine);
+        margin: 4px 0 0;
+        flex: none;
+        width: 16px;
+        height: 16px;
+      }
+      #raw-calculator .raw-choice strong {
+        display: block;
+        font-weight: 600;
+      }
+      #raw-calculator .raw-choice .raw-small {
+        display: block;
+        margin-top: 4px;
+      }
+      #raw-calculator input[type="number"],
+      #raw-calculator select {
+        width: 100%;
+        border: 1px solid #a18c8d;
+        border-radius: 4px;
+        padding: 12px 14px;
+        min-height: 48px;
+        background: white;
+        color: var(--wine);
+      }
+      #raw-calculator :focus-visible {
+        outline: 3px solid var(--wine);
+        outline-offset: 4px;
+      }
+      #raw-calculator input[aria-invalid="true"] {
+        border: 2px solid #a42b29;
+      }
+      #raw-calculator .raw-weight {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      #raw-calculator .raw-weight input {
+        max-width: 210px;
+      }
+      #raw-calculator .raw-consultation {
+        background: #eee7e0;
+        margin: 24px 0;
+        padding: 20px;
+        border-left: 3px solid var(--wine);
+      }
+      #raw-calculator .raw-consultation p {
+        margin: 8px 0 0;
+      }
+      #raw-calculator .raw-consultation a {
+        display: inline-block;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+      #raw-calculator .raw-meals-field {
+        margin-bottom: 24px;
+      }
+      #raw-calculator .raw-hidden {
+        display: none !important;
+      }
+      #raw-calculator button {
+        cursor: pointer;
+      }
+      #raw-calculator .raw-primary {
+        width: 100%;
+        min-height: 52px;
+      }
+      #raw-calculator .raw-primary:hover {
+        background: #582931;
+      }
+      #raw-calculator .raw-result {
+        background: var(--wine);
+        color: white;
+        border-color: var(--wine);
+        padding: 32px;
+      }
+      #raw-calculator .raw-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      #raw-calculator .raw-number {
+        font-size: clamp(56px, 7vw, 88px);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+        margin: 24px 0 4px;
+        overflow-wrap: anywhere;
+      }
+      #raw-calculator .raw-unit {
+        font-size: 18px;
+      }
+      #raw-calculator .raw-range {
+        color: var(--cream);
+        margin: 16px 0 0;
+        font-size: 15.2px;
+      }
+      #raw-calculator .raw-split {
+        border-top: 1px solid #aa8085;
+        margin-top: 28px;
+        padding-top: 24px;
+      }
+      #raw-calculator .raw-split strong {
+        display: inline-block;
+        font-size: 28px;
+        font-weight: 500;
+        margin-top: 8px;
+      }
+      #raw-calculator .raw-detail {
+        margin-top: 20px;
+      }
+      #raw-calculator .raw-details {
+        margin-top: 16px;
+      }
+      #raw-calculator #barf-.raw-details {
+        margin-top: 0;
+      }
+      #raw-calculator .raw-summary {
+        cursor: pointer;
+        font-weight: 600;
+        line-height: 1.5;
+        padding: 4px 0;
+      }
+      #raw-calculator .raw-math {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      #raw-calculator .raw-math div {
+        flex: 1;
+        min-width: 80px;
+      }
+      #raw-calculator .raw-math .raw-small {
+        display: block;
+      }
+      #raw-calculator .raw-note {
+        font-size: 14.4px;
+        color: var(--muted);
+      }
+      #raw-calculator .raw-note p {
+        margin: 0 0 16px;
+      }
+      #raw-calculator .raw-note p:last-child {
+        margin: 0;
+      }
+      #raw-calculator .raw-note strong {
+        color: var(--wine);
+      }
+      #raw-calculator .raw-error {
+        color: #a42b29;
+        font-weight: 600;
+        margin: 12px 0 0;
+      }
+      #raw-calculator .raw-barf-grid {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0 20px;
+        font-size: 14px;
+      }
+      #raw-calculator .raw-barf-grid th,
+      #raw-calculator .raw-barf-grid td {
+        padding: 12px 4px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+      }
+      #raw-calculator .raw-barf-grid th {
+        color: var(--muted);
+        font-weight: 500;
+      }
+      #raw-calculator .raw-barf-grid th:last-child,
+      #raw-calculator .raw-barf-grid td:last-child {
+        text-align: right;
+        font-weight: 650;
+        white-space: nowrap;
+      }
+      #raw-calculator .raw-barf-grid td:nth-child(2),
+      #raw-calculator .raw-barf-grid th:nth-child(2) {
+        text-align: right;
+        white-space: nowrap;
+      }
+      #raw-calculator .raw-barf-grid td:first-child {
+        padding-right: 8px;
+      }
+      #raw-calculator .raw-bottom {
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        line-height: 1.6;
+      }
+      @media (max-width: 760px) {
+      #raw-calculator .raw-inner {
+          padding: 32px 20px 40px;
+        }
+      #raw-calculator .raw-layout {
+          grid-template-columns: 1fr;
+        }
+      #raw-calculator .raw-card {
+          padding: 20px;
+        }
+      #raw-calculator .raw-intro {
+          margin-bottom: 28px;
+        }
+      #raw-calculator .raw-top {
+          margin-bottom: 24px;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+      #raw-calculator .raw-choice,
+      #raw-calculator .raw-primary {
+          transition:
+            background 0.15s,
+            border-color 0.15s;
+        }
+      }
+    
+      #raw-calculator *, #raw-calculator *::before, #raw-calculator *::after { box-sizing: border-box; }
+      #raw-calculator h1, #raw-calculator h2 { color: inherit; font-family: inherit; }
+      #raw-calculator p { margin-top: 0; }
+      #raw-calculator .raw-card { min-width: 0; }
+      #raw-calculator .raw-small { display: block; }
+      #raw-calculator .raw-legend { font-size: 16px; }
+      #raw-calculator .raw-summary { cursor: default; font-size: 16px; }
+      #raw-calculator .raw-choice > span { min-width: 0; }
+      #raw-calculator .raw-choice input { appearance: auto; position: static; opacity: 1; padding: 0; min-height: 0; }
+      #raw-calculator .raw-details { margin-top: 16px; }
+      #raw-calculator .raw-detail > .raw-details { margin-top: 0; }
+      #raw-calculator .raw-math .raw-small { font-size: 14px; }
+      #raw-calculator .raw-primary { line-height: 1.5; }
+      #raw-calculator .raw-primary:disabled { opacity: .6; cursor: not-allowed; }
+      @container (max-width: 700px) {
+        #raw-calculator .raw-layout { grid-template-columns: 1fr; }
+        #raw-calculator .raw-inner { padding: 32px 16px; }
+        #raw-calculator .raw-card { padding: 20px; }
+      }
+
+</style>
+<div id="raw-calculator" lang="lv">
+  <div class="raw-inner">
+      <div class="raw-top">
+        <div class="raw-brand">Dr. Neretniece</div>
+        <div class="raw-tag">Suņu uzturs</div>
+      </div>
+      <h1>Cik daudz RAW barības dot sunim?</h1>
+      <p class="raw-intro">
+        Aprēķini pieauguša suņa orientējošo dienas devu svara uzturēšanai.
+        Rezultāts ir sākuma punkts, kuru pielāgot pēc suņa svara un ķermeņa
+        kondīcijas.
+      </p>
+      
+      <div class="raw-layout">
+        <form class="raw-card" id="raw-form" novalidate>
+          <div class="raw-label">
+            <span id="raw-weight-label">Cik suns šobrīd sver?</span>
+          </div>
+          <div class="raw-weight">
+            <input
+              id="raw-weight" aria-labelledby="raw-weight-label"
+              type="number"
+              inputmode="decimal"
+              min="0.5"
+              max="150"
+              step="any"
+              value="25"
+              aria-describedby="raw-weight-hint raw-error"
+              required
+            />
+            <span>kg</span>
+          </div>
+          <p class="raw-hint" id="raw-weight-hint">
+            Paredzēts pilnībā izaugušiem suņiem (aptuveni no 12–18 mēnešu
+            vecuma).
+          </p>
+          <div class="raw-consultation raw-note">
+            <strong>Vai sunim jāsamazina svars?</strong>
+            <p>
+              Svara samazināšanai nepieciešams individuāls plāns. Piesakies pie
+              manis uz uztura konsultāciju, lai kopā noteiktu piemērotu mērķi un
+              dienas devu.
+            </p>
+            <a href="https://annija-neretniece-v0halx.mailerpage.io/kontakti"
+              >Pieteikties konsultācijai →</a
+            >
+          </div>
+          <div class="raw-fieldset" role="group" aria-labelledby="raw-profile-label">
+            <div class="raw-legend" id="raw-profile-label">Kurš apraksts sunim atbilst vislabāk?</div>
+            <p class="raw-hint raw-profile-hint">
+              Vērtē vidējo ikdienu, ņemot vērā gan kustību ilgumu, gan
+              intensitāti. Mierīga pastaiga un skrējiens vienādā ilgumā nav
+              vienāda slodze.
+            </p>
+            <div class="raw-choices">
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="1.2" aria-labelledby="raw-profile-1" />
+                <span id="raw-profile-1">
+                  <strong>Ļoti mierīgs, ar noslieci uz lieko svaru</strong>
+                  <span class="raw-small">Parasti līdz 30 minūtēm mierīgas kustības dienā; suns
+                    viegli pieņemas svarā.</span>
+                </span>
+              </div>
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="1.4" aria-labelledby="raw-profile-2" />
+                <span id="raw-profile-2">
+                  <strong>Mazaktīvs</strong>
+                  <span class="raw-small">Aptuveni 30–60 minūtes vieglas kustības dienā, piemēram,
+                    nesteidzīgas pastaigas; pārējo dienu pārsvarā
+                    atpūšas.</span>
+                </span>
+              </div>
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="1.5" checked aria-labelledby="raw-profile-3" />
+                <span id="raw-profile-3">
+                  <strong>Vidēji aktīvs pieaugušais</strong>
+                  <span class="raw-small">Aptuveni 1–2 stundas kustības dienā: pastaigas, rotaļas vai
+                    daļa aktīvākas slodzes. Intensitāte var mainīt enerģijas
+                    vajadzību.</span>
+                </span>
+              </div>
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="1.6" aria-labelledby="raw-profile-4" />
+                <span id="raw-profile-4">
+                  <strong>Kastrēts un ar zemu aktivitāti</strong>
+                  <span class="raw-small">Aptuveni 30–60 minūtes vieglas kustības dienā. Avota
+                    atsevišķā kategorija; koeficients ir lielāks nekā vidēji
+                    aktīvam sunim.</span>
+                </span>
+              </div>
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="1.8" aria-labelledby="raw-profile-5" />
+                <span id="raw-profile-5">
+                  <strong>Nekastrēts un ar zemu aktivitāti</strong>
+                  <span class="raw-small">Aptuveni 30–60 minūtes vieglas kustības dienā. Avota
+                    atsevišķā kategorija; koeficients ir lielāks nekā vidēji
+                    aktīvam sunim.</span>
+                </span>
+              </div>
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="2" aria-labelledby="raw-profile-6" />
+                <span id="raw-profile-6">
+                  <strong>Jauns pieaugušais, vidēji aktīvs</strong>
+                  <span class="raw-small">Pilnībā izaudzis, vēl jauns suns ar aptuveni 1–2 stundām
+                    kustības dienā, tostarp rotaļām vai aktīvāku slodzi.</span>
+                </span>
+              </div>
+              <div class="raw-choice">
+                <input type="radio" name="raw-profile" value="3" aria-labelledby="raw-profile-7" />
+                <span id="raw-profile-7">
+                  <strong>Ļoti aktīvs / darba suns</strong>
+                  <span class="raw-small">Apmēram 3 vai vairāk stundas būtiskas slodzes dienā,
+                    piemēram, sports vai darbs. Šādiem suņiem vajadzība var ļoti
+                    atšķirties.</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="raw-meals-field">
+            <div class="raw-label" id="raw-meals-label">Cik ēdienreižu dienā?</div>
+            <select id="raw-meals" aria-labelledby="raw-meals-label">
+              <option value="1">1 ēdienreize</option>
+              <option value="2" selected>2 ēdienreizes</option>
+              <option value="3">3 ēdienreizes</option>
+              <option value="4">4 ēdienreizes</option>
+            </select>
+          </div>
+          <button class="raw-primary" type="submit" disabled>Aprēķināt dienas devu</button>
+          <p id="raw-error" class="raw-error raw-hidden" role="alert"></p>
+        </form>
+        <div>
+          <div
+            class="raw-card raw-result"
+            id="raw-result"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <h2 class="raw-eyebrow">Orientējošā sākuma deva</h2>
+            <div class="raw-number">
+              <span id="raw-grams">—</span>
+            </div>
+            <div class="raw-unit">grami dienā</div>
+            <p class="raw-range" id="raw-range"></p>
+            <div class="raw-split">
+              <div>Vienā ēdienreizē</div>
+              <strong id="raw-portion">—</strong> <span id="raw-times"> </span>
+            </div>
+          </div>
+          <div class="raw-card raw-detail">
+            <h2>Kā aprēķins veikts?</h2>
+            <p id="raw-explanation" class="raw-note"></p>
+            <div class="raw-details">
+              <h2 class="raw-summary">Aprēķina detaļas</h2>
+              <div class="raw-math">
+                <div>
+                  <span class="raw-small">RER</span>
+                  <strong id="raw-rer"> </strong>
+                </div>
+                <div>
+                  <span class="raw-small">Koeficients</span>
+                  <strong id="raw-factor"> </strong>
+                </div>
+                <div>
+                  <span class="raw-small">Enerģija dienā</span>
+                  <strong id="raw-der"> </strong>
+                </div>
+              </div>
+              <p class="raw-hint">
+                RER = 70 × svars(kg)^0,75; enerģija dienā = RER ×
+                koeficients.
+              </p>
+            </div>
+          </div>
+          <div class="raw-card raw-detail">
+            <div class="raw-details">
+              <h2 class="raw-summary">Orientējošs BARF sadalījums</h2>
+              <p class="raw-hint">
+                Piemērs, kā aprēķināto dienas daudzumu sadalīt pēc vienas BARF
+                procentu shēmas. Grami ir noapaļoti; tie mainās, kad maini suņa
+                svaru vai aktivitātes izvēli.
+              </p>
+              <table class="raw-barf-grid">
+                <thead>
+                  <tr>
+                    <th scope="col">Sastāvdaļa</th>
+                    <th scope="col">Daļa</th>
+                    <th scope="col">Dienā</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Muskuļgaļa</td>
+                    <td>70 %</td>
+                    <td id="raw-barf-meat">—</td>
+                  </tr>
+                  <tr>
+                    <td>Ēdamais kauls</td>
+                    <td>10 %</td>
+                    <td id="raw-barf-bone">—</td>
+                  </tr>
+                  <tr>
+                    <td>Aknas</td>
+                    <td>5 %</td>
+                    <td id="raw-barf-liver">—</td>
+                  </tr>
+                  <tr>
+                    <td>Citi sekrēcijas orgāni</td>
+                    <td>5 %</td>
+                    <td id="raw-barf-organ">—</td>
+                  </tr>
+                  <tr>
+                    <td>Dārzeņi</td>
+                    <td>7 %</td>
+                    <td id="raw-barf-veg">—</td>
+                  </tr>
+                  <tr>
+                    <td>Sēklas un rieksti</td>
+                    <td>2 %</td>
+                    <td id="raw-barf-seed">—</td>
+                  </tr>
+                  <tr>
+                    <td>Augļi</td>
+                    <td>1 %</td>
+                    <td id="raw-barf-fruit">—</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="raw-note">
+                <strong>Ēdamais kauls</strong> ir pati kaula daļa, nevis visa
+                gaļainā kaula gabala svars. Procentu sadalījums neizvērtē
+                kalcija un fosfora attiecību, tauku un enerģijas blīvumu vai
+                vitamīnu un mikroelementu nodrošinājumu. To neizmanto kā gatavu
+                ikdienas recepti bez konkrēto sastāvdaļu izvērtēšanas.
+              </p>
+            </div>
+          </div>
+          <div class="raw-card raw-detail raw-note">
+            <p>
+              <strong>Par gramiem.</strong> Aprēķins pieņem vidēji treknu RAW
+              maltīti: 538–567 g uz 1000 kcal. Tava barība var būt būtiski
+              treknāka vai liesāka. Ja zini tās enerģētisko vērtību, šie grami
+              var neatbilst vajadzīgajam daudzumam.
+            </p>
+            <p>
+              <strong>Par uzturu.</strong> Barības daudzums neparāda, vai
+              maltīte ir pilnvērtīga. Vēro svaru un ķermeņa kondīciju un devu
+              koriģē. Svara samazināšanai, veselības problēmu, grūsnības un
+              laktācijas gadījumos piesakies individuālai uztura konsultācijai.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="raw-bottom">
+        Dr. Neretniece · Orientējošs informatīvs rīks pieaugušu suņu saimniekiem
+      </div>
+    
+  </div>
+</div>
+<script>
+      (() => {
+        const root = document.getElementById("raw-calculator");
+        const $ = (id) => root.querySelector("#raw-" + id);
+        const form = $("form");
+        const selected = (name) =>
+          form.querySelector('input[name="raw-' + name + '"]:checked').value;
+        const fmt = (value) => Math.round(value).toLocaleString("lv-LV");
+        const barf = {
+          meat: 70,
+          bone: 10,
+          liver: 5,
+          organ: 5,
+          veg: 7,
+          seed: 2,
+          fruit: 1,
+        };
+
+        function calculate() {
+          const kg = Number($("weight").value);
+          const invalid =
+            !$("weight").value || !Number.isFinite(kg) || kg < 0.5 || kg > 150;
+          $("error").textContent = invalid
+            ? "Ievadi suņa svaru no 0,5 līdz 150 kg."
+            : "";
+          $("error").classList.toggle("raw-hidden", !invalid);
+          $("weight").setAttribute("aria-invalid", String(invalid));
+          $("result").classList.toggle("raw-hidden", invalid);
+          if (invalid) {
+            $("explanation").textContent =
+              "Ievadi derīgu svaru, lai redzētu aprēķinu.";
+            for (const id of [
+              "grams",
+              "portion",
+              "rer",
+              "factor",
+              "der",
+              ...Object.keys(barf).map((key) => "barf-" + key),
+            ]) {
+              $(id).textContent = "—";
+            }
+            $("range").textContent = "";
+            $("times").textContent = "";
+            return;
+          }
+          const factor = Number(selected("profile"));
+          const rer = 70 * Math.pow(kg, 0.75);
+          const der = rer * factor;
+          const lo = der * 0.538;
+          const hi = der * 0.567;
+          const mid = (lo + hi) / 2;
+          const meals = Number($("meals").value);
+
+          $("grams").textContent = fmt(mid);
+          $("range").textContent =
+            "Aptuvenais diapazons: " + fmt(lo) + "–" + fmt(hi) + " g dienā";
+          $("portion").textContent = fmt(mid / meals) + " g";
+          $("times").textContent = "× " + meals;
+          $("rer").textContent = fmt(rer) + " kcal";
+          $("factor").textContent = factor.toLocaleString("lv-LV") + "×";
+          $("der").textContent = fmt(der) + " kcal";
+          $("explanation").textContent =
+            "Izmantots suņa pašreizējais svars " +
+            kg.toLocaleString("lv-LV") +
+            " kg un izvēlētās situācijas koeficients " +
+            factor.toLocaleString("lv-LV") +
+            ".";
+          for (const [key, percent] of Object.entries(barf)) {
+            $("barf-" + key).textContent = fmt((mid * percent) / 100) + " g";
+          }
+        }
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          calculate();
+          if (!$("error").classList.contains("raw-hidden")) {
+            $("weight").focus();
+            if (window.innerWidth < 760)
+              $("error").scrollIntoView({ block: "center" });
+          }
+        });
+        form.addEventListener("click", (event) => {
+          const choice = event.target.closest(".raw-choice");
+          if (!choice || event.target.matches("input")) return;
+          const radio = choice.querySelector("input");
+          radio.checked = true;
+          radio.focus();
+          calculate();
+        });
+        form.addEventListener("change", calculate);
+        $("weight").addEventListener("input", calculate);
+        calculate();
+        form.querySelector("button[type=submit]").disabled = false;
+      })();
+    
+</script>

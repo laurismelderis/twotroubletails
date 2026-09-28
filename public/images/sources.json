@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/eI5TJjDcXxFKrLvJeHPYmPMDO4JwVDtViyx1VsFr.jpg",
+    "file": "hero.webp"
+  },
+  "benefit-dog": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/lw7zztFB72A1A5838pj9jHi9HyxLWDbWMAeeHLXv.png",
+    "file": "benefit-dog.webp"
+  },
+  "benefit-balance": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/GNpw9ZktVrY8nR4FDaqpofSYWr0cy9ir7RFHceQz.png",
+    "file": "benefit-balance.webp"
+  },
+  "benefit-routine": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/Bfjx83NcB6jdj3g2QjRpQmQjvcETIThQW8ShZf0X.png",
+    "file": "benefit-routine.webp"
+  },
+  "benefit-bowl": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/CZg2RN6opREHIE4en2NfdfvldNyLhCYfipLuuJLv.png",
+    "file": "benefit-bowl.webp"
+  },
+  "testimonial": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/2vbnqwF1YWQNnmv5S7gwfXvyDZaEl616hZ9W9ihv.png",
+    "file": "testimonial.webp"
+  },
+  "lecture": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/0HkKOloeFlp8s76T5dt3i2SdSKvBsOHfZXZkJTCk.png",
+    "file": "lecture.webp"
+  },
+  "lecture-product": {
+    "source": "https://files.stripe.com/links/MDB8YWNjdF8xTmFIblBIb21lZ0tuZm8yfGZsX2xpdmVfaVdFRW42N283R0RXdzFJY2VCU2NJaDNU00o4sPVrqA",
+    "file": "lecture-product.webp"
+  },
+  "consultation-product": {
+    "source": "https://files.stripe.com/links/MDB8YWNjdF8xTmFIblBIb21lZ0tuZm8yfGZsX2xpdmVfSkxaRUFDOUpQQlR0endKd1BsOXlEMWh400ME74VX80",
+    "file": "consultation-product.webp"
+  },
+  "annija": {
+    "source": "https://storage.mlcdn.com/account_image/2157381/Ouz2B7d6NqPiCNVRdjluyb1T7kOtV4Sw0Ccul6eI.jpg",
+    "file": "annija.webp"
+  }
+}
